@@ -23,6 +23,8 @@ def total_letters(text):
     Retorna la cantidad total de letras en el texto.
     Debe USAR las funciones count_vowels y count_consonants.
     """
+    total = count_vowels(text) + count_consonants(text)
+    return total
     return "ANSWER HERE"  # Remove this line and implement
 
 def vowel_percentage(text):
@@ -33,7 +35,13 @@ def vowel_percentage(text):
 
     Ejemplo: "hola" tiene 2 vocales de 4 letras → 50.0
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    if total_letters(text) > 0:
+        porcentaje = (count_vowels(text) / total_letters(text) )*100
+        decimal = round((porcentaje - int(porcentaje))*10)
+        redondeado = int(porcentaje) + (decimal/10)
+        return redondeado
+    else:
+        return 0.0
 
 def analyze_text(text):
     """
@@ -44,4 +52,8 @@ def analyze_text(text):
 
     Ejemplo: analyze_text("hola") → "V:2 C:2 T:4 P:50.0%"
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    vowels = count_vowels(text)
+    consonants = count_consonants(text)
+    total = total_letters(text)
+    percentage = vowel_percentage(text)
+    return f"V:{vowels} C:{consonants} T:{total} P:{percentage}%"
